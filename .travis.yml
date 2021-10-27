@@ -23,4 +23,4 @@ deploy:
   edge: true 
   app: devopslab-mba-nataliamilani
   on:
-      branch: main
+      branch: master
