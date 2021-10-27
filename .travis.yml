@@ -12,9 +12,10 @@ python:
 install:
   - pip install flask
 
-# Defini o script de Teste que deve rodar toda vez que o código for alterado.
-script:
-  - python -m unittest -v test
+# Defini o script de Teste que deve rodar toda vez que o código for alterado.                                                                                                                            
+script:                                                                                                                                                                                                  
+  - python -m unittest -v test || travis_terminate 1;
+  - sonar-scanner || travis_terminate 1;
 
 # Definir o Deploy no Heroku
 deploy:
@@ -24,3 +25,8 @@ deploy:
   app: devopslab-mba-nataliamilani
   on:
       branch: master
+
+addons:
+  sonarcloud:
+    organization: nataliamilani
+    token: ${SONAR_TOKEN}      
